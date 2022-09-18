@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.buckler.dnf.dao.AccountsMapper">
+    <resultMap id="BaseResultMap" type="cc.buckler.dnf.pojo.Accounts">
+        <id column="UID" jdbcType="INTEGER" property="uid"/>
+        <result column="accountname" jdbcType="VARCHAR" property="accountname"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="qq" jdbcType="VARCHAR" property="qq"/>
+        <result column="VIP" jdbcType="VARCHAR" property="vip"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        UID
+        , accountname, password, qq, VIP
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from accounts
+        where UID = #{uid,jdbcType=INTEGER}
+    </select>
+
+    <select id="login" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from accounts
+        where accountname = #{accountname,jdbcType=VARCHAR}
+    </select>
+</mapper>
