@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.buckler.dnf.dao.CashCeraPointMapper">
+    <resultMap id="BaseResultMap" type="cc.buckler.dnf.pojo.CashCeraPoint">
+        <id column="account" jdbcType="VARCHAR" property="account"/>
+        <result column="cera_point" jdbcType="INTEGER" property="ceraPoint"/>
+        <result column="reg_date" jdbcType="TIMESTAMP" property="regDate"/>
+        <result column="mod_date" jdbcType="TIMESTAMP" property="modDate"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        account
+        , cera_point, reg_date, mod_date
+    </sql>
+    <select id="selectCeraPointByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select account,
+               cera_point
+        from cash_cera_point
+        where account = #{account,jdbcType=VARCHAR};
+    </select>
+
+    <update id="updateCeraPointByAccount" parameterType="cc.buckler.dnf.pojo.CashCeraPoint">
+        update cash_cera_point
+        set cera_point = #{ceraPoint,jdbcType=INTEGER}
+        where account = #{account,jdbcType=VARCHAR};
+    </update>
+</mapper>
