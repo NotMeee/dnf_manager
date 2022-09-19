@@ -57,11 +57,11 @@ public class MyBatisConfig {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dynamicDataSource);
         //配置实体类目录
-        factoryBean.setTypeAliasesPackage("cc.buckler.pojo");
+        factoryBean.setTypeAliasesPackage("cc.buckler.dnf.pojo");
         //添加驼峰命名法映射
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
         configuration.setMapUnderscoreToCamelCase(true);
-        Resource[] resources = new PathMatchingResourcePatternResolver().getResources("classpath:cc/buckler/mapper/*.xml");
+        Resource[] resources = new PathMatchingResourcePatternResolver().getResources("classpath:cc/buckler/dnf/mapper/*.xml");
         factoryBean.setMapperLocations(resources);
         //添加到factoryBean里
         factoryBean.setConfiguration(configuration);

@@ -1,3 +1,15 @@
+#spring:
+#  datasource:
+#    taiwan:
+#      jdbc-url: jdbc:mysql://localhost:3306/d_taiwan?characterEncoding=UTF-8&useSSL=false&Timezone=UTC
+#      driver-class-name: com.mysql.jdbc.Driver
+#      username: game
+#      password: uu5!^%jg
+#    billing:
+#      jdbc-url: jdbc:mysql://localhost:3306/taiwan_billing?characterEncoding=UTF-8&useSSL=false&Timezone=UTC
+#      driver-class-name: com.mysql.jdbc.Driver
+#      username: game
+#      password: uu5!^%jg
 spring:
   datasource:
     taiwan:
@@ -11,7 +23,7 @@ spring:
       username: game
       password: morelove0813...
 server:
-  port: 11111
+  port: 1111
   tomcat:
     uri-encoding: UTF-8
     connection-timeout: 600000
