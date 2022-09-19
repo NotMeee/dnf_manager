@@ -1,6 +1,7 @@
 package cc.buckler.dnf.controller;
 
 import cc.buckler.dnf.pojo.CashCera;
+import cc.buckler.dnf.pojo.CashCeraPoint;
 import cc.buckler.dnf.service.ICash;
 import cc.buckler.dnf.utils.result.HttpResult;
 import cc.buckler.dnf.utils.result.ResultCodeEnum;
@@ -36,7 +37,17 @@ public class CashController {
 
     @GetMapping("/cash/cerapoint")
     public HttpResult cashCeraPoint(String account, int cerapointnum) {
-
-        return HttpResult.success();
+        CashCeraPoint ceraPoint = new CashCeraPoint();
+        ceraPoint.setAccount(account);
+        ceraPoint.setCeraPoint(cerapointnum);
+        int result = iCash.updateCeraPointByAccount(ceraPoint);
+        Map<String, String> map = new HashMap<>();
+        map.put("result", "1");
+        map.put("msg", "D点充值成功");
+        if (result == 1) {
+            return HttpResult.success(map);
+        } else {
+            return HttpResult.success();
+        }
     }
 }
