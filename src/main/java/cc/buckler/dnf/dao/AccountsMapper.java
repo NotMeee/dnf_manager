@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface AccountsMapper {
     Accounts selectByPrimaryKey(Integer uid);
 
-    Accounts login(String accountname);
+    Accounts login(String accountname,String password);
 }

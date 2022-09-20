@@ -23,6 +23,6 @@
         select
         <include refid="Base_Column_List"/>
         from accounts
-        where accountname = #{accountname,jdbcType=VARCHAR}
+        where accountname = #{accountname} and password = #{password};
     </select>
 </mapper>

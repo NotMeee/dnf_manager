@@ -39,4 +39,16 @@ public class CashService implements ICash {
     public int updateCeraPointByAccount(CashCeraPoint cashCeraPoint) {
         return cashCeraPointMapper.updateCeraPointByAccount(cashCeraPoint);
     }
+
+    @Override
+    @DataSource(DataSourceType.billing)
+    public int clearCeraByAccount(String account) {
+        return cashCeraMapper.clearCeraByAccount(account);
+    }
+
+    @Override
+    @DataSource(DataSourceType.billing)
+    public int clearCeraPointByAccount(String account) {
+        return cashCeraPointMapper.clearCeraPointByAccount(account);
+    }
 }

@@ -8,4 +8,6 @@ public interface CashCeraMapper {
     CashCera selectCeraByPrimaryKey(String account);
 
     int updateCeraByAccount(CashCera cashCera);
+
+    int clearCeraByAccount(String account);
 }

@@ -22,6 +22,13 @@ spring:
       driver-class-name: com.mysql.jdbc.Driver
       username: game
       password: morelove0813...
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 100
+      auto-commit: true
+      idle-timeout: 30000
+      connection-timeout: 1800000
+      connection-test-query: SELECT 1
 server:
   port: 1111
   tomcat:
@@ -31,3 +38,4 @@ logging:
   config: classpath:log4j2.xml
 mybatis:
   mapper-locations: classpath*:cc/buckler/dnf/mapper/*.xml
+  type-aliases-package: cc.buckler.dnf.pojo

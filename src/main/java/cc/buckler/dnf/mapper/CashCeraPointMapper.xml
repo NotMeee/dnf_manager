@@ -21,6 +21,12 @@
     <update id="updateCeraPointByAccount" parameterType="cc.buckler.dnf.pojo.CashCeraPoint">
         update cash_cera_point
         set cera_point = #{ceraPoint,jdbcType=INTEGER}
-        where account = #{account,jdbcType=VARCHAR};
+        where account = #{account};
+    </update>
+
+    <update id="clearCeraPointByAccount" parameterType="java.lang.String">
+        update cash_cera_point
+        set cera_point = 0
+        where account = #{account};
     </update>
 </mapper>

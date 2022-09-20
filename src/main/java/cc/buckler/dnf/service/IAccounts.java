@@ -6,5 +6,5 @@ public interface IAccounts {
 
     Accounts selectByPrimaryKey(Integer uid);
 
-    Accounts login(String accountname);
+    Accounts login(String accountname, String password);
 }
