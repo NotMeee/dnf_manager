@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.buckler.dnf.dao.NewCharacQuestMapper">
+    <resultMap id="BaseResultMap" type="cc.buckler.dnf.pojo.NewCharacQuest">
+        <id column="charac_no" jdbcType="INTEGER" property="characNo"/>
+        <result column="play_1" jdbcType="SMALLINT" property="play1"/>
+        <result column="play_1_trigger" jdbcType="INTEGER" property="play1Trigger"/>
+        <result column="play_2" jdbcType="SMALLINT" property="play2"/>
+        <result column="play_2_trigger" jdbcType="INTEGER" property="play2Trigger"/>
+        <result column="play_3" jdbcType="SMALLINT" property="play3"/>
+        <result column="play_3_trigger" jdbcType="INTEGER" property="play3Trigger"/>
+        <result column="play_4" jdbcType="SMALLINT" property="play4"/>
+        <result column="play_4_trigger" jdbcType="INTEGER" property="play4Trigger"/>
+        <result column="play_5" jdbcType="SMALLINT" property="play5"/>
+        <result column="play_5_trigger" jdbcType="INTEGER" property="play5Trigger"/>
+        <result column="play_6" jdbcType="SMALLINT" property="play6"/>
+        <result column="play_6_trigger" jdbcType="INTEGER" property="play6Trigger"/>
+        <result column="play_7" jdbcType="SMALLINT" property="play7"/>
+        <result column="play_7_trigger" jdbcType="INTEGER" property="play7Trigger"/>
+        <result column="play_8" jdbcType="SMALLINT" property="play8"/>
+        <result column="play_8_trigger" jdbcType="INTEGER" property="play8Trigger"/>
+        <result column="play_9" jdbcType="SMALLINT" property="play9"/>
+        <result column="play_9_trigger" jdbcType="INTEGER" property="play9Trigger"/>
+        <result column="play_10" jdbcType="SMALLINT" property="play10"/>
+        <result column="play_10_trigger" jdbcType="INTEGER" property="play10Trigger"/>
+        <result column="auto_clear" jdbcType="TINYINT" property="autoClear"/>
+        <result column="play_11" jdbcType="SMALLINT" property="play11"/>
+        <result column="play_11_trigger" jdbcType="INTEGER" property="play11Trigger"/>
+        <result column="play_12" jdbcType="SMALLINT" property="play12"/>
+        <result column="play_12_trigger" jdbcType="INTEGER" property="play12Trigger"/>
+        <result column="play_13" jdbcType="SMALLINT" property="play13"/>
+        <result column="play_13_trigger" jdbcType="INTEGER" property="play13Trigger"/>
+        <result column="play_14" jdbcType="SMALLINT" property="play14"/>
+        <result column="play_14_trigger" jdbcType="INTEGER" property="play14Trigger"/>
+        <result column="play_15" jdbcType="SMALLINT" property="play15"/>
+        <result column="play_15_trigger" jdbcType="INTEGER" property="play15Trigger"/>
+        <result column="play_16" jdbcType="SMALLINT" property="play16"/>
+        <result column="play_16_trigger" jdbcType="INTEGER" property="play16Trigger"/>
+        <result column="play_17" jdbcType="SMALLINT" property="play17"/>
+        <result column="play_17_trigger" jdbcType="INTEGER" property="play17Trigger"/>
+        <result column="play_18" jdbcType="SMALLINT" property="play18"/>
+        <result column="play_18_trigger" jdbcType="INTEGER" property="play18Trigger"/>
+        <result column="play_19" jdbcType="SMALLINT" property="play19"/>
+        <result column="play_19_trigger" jdbcType="INTEGER" property="play19Trigger"/>
+        <result column="play_20" jdbcType="SMALLINT" property="play20"/>
+        <result column="play_20_trigger" jdbcType="INTEGER" property="play20Trigger"/>
+        <result column="urgentQuestIndex" jdbcType="SMALLINT" property="urgentquestindex"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cc.buckler.dnf.pojo.NewCharacQuest">
+        <result column="clear_quest" jdbcType="LONGVARBINARY" property="clearQuest"/>
+        <result column="quest_notify" jdbcType="LONGVARBINARY" property="questNotify"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        charac_no
+        , play_1, play_1_trigger, play_2, play_2_trigger, play_3, play_3_trigger,
+    play_4, play_4_trigger, play_5, play_5_trigger, play_6, play_6_trigger, play_7, play_7_trigger, 
+    play_8, play_8_trigger, play_9, play_9_trigger, play_10, play_10_trigger, auto_clear, 
+    play_11, play_11_trigger, play_12, play_12_trigger, play_13, play_13_trigger, play_14, 
+    play_14_trigger, play_15, play_15_trigger, play_16, play_16_trigger, play_17, play_17_trigger, 
+    play_18, play_18_trigger, play_19, play_19_trigger, play_20, play_20_trigger, urgentQuestIndex
+    </sql>
+    <sql id="Blob_Column_List">
+        clear_quest
+        , quest_notify
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from new_charac_quest
+        where charac_no = #{characNo,jdbcType=INTEGER}
+    </select>
+
+
+</mapper>

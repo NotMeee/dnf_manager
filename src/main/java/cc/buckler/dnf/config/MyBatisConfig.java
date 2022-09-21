@@ -32,18 +32,26 @@ public class MyBatisConfig {
         return DataSourceBuilder.create().build();
     }
 
-    @Bean("billingDataSrouce")
+    @Bean("billingDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.billing")
-    public DataSource billingDataSrouce() {
+    public DataSource billingDataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean("cainDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.cain")
+    public DataSource cainDataSource() {
         return DataSourceBuilder.create().build();
     }
 
     @Bean
     public DynamicDataSource dataSource(@Qualifier("taiwanDataSource") DataSource taiwanDataSource,
-                                        @Qualifier("billingDataSrouce") DataSource billingDataSrouce) {
+                                        @Qualifier("billingDataSource") DataSource billingDataSource,
+                                        @Qualifier("cainDataSource") DataSource cainDataSource) {
         Map<Object, Object> map = new HashMap<>();
         map.put(DataSourceType.taiwan, taiwanDataSource);
-        map.put(DataSourceType.billing, billingDataSrouce);
+        map.put(DataSourceType.billing, billingDataSource);
+        map.put(DataSourceType.cain, cainDataSource);
 
         DynamicDataSource dynamicDataSource = new DynamicDataSource();
         dynamicDataSource.setTargetDataSources(map);

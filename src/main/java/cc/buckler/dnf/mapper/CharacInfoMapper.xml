@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.buckler.dnf.dao.CharacInfoMapper">
+    <resultMap id="BaseResultMap" type="cc.buckler.dnf.pojo.CharacInfo">
+        <id column="charac_no" jdbcType="INTEGER" property="characNo"/>
+        <result column="m_id" jdbcType="INTEGER" property="mId"/>
+        <result column="charac_name" jdbcType="VARCHAR" property="characName"/>
+        <result column="village" jdbcType="TINYINT" property="village"/>
+        <result column="job" jdbcType="TINYINT" property="job"/>
+        <result column="lev" jdbcType="TINYINT" property="lev"/>
+        <result column="exp" jdbcType="INTEGER" property="exp"/>
+        <result column="grow_type" jdbcType="TINYINT" property="growType"/>
+        <result column="HP" jdbcType="TINYINT" property="hp"/>
+        <result column="maxHP" jdbcType="SMALLINT" property="maxhp"/>
+        <result column="maxMP" jdbcType="SMALLINT" property="maxmp"/>
+        <result column="phy_attack" jdbcType="SMALLINT" property="phyAttack"/>
+        <result column="phy_defense" jdbcType="SMALLINT" property="phyDefense"/>
+        <result column="mag_attack" jdbcType="SMALLINT" property="magAttack"/>
+        <result column="mag_defense" jdbcType="SMALLINT" property="magDefense"/>
+        <result column="inven_weight" jdbcType="INTEGER" property="invenWeight"/>
+        <result column="hp_regen" jdbcType="SMALLINT" property="hpRegen"/>
+        <result column="mp_regen" jdbcType="SMALLINT" property="mpRegen"/>
+        <result column="move_speed" jdbcType="SMALLINT" property="moveSpeed"/>
+        <result column="attack_speed" jdbcType="SMALLINT" property="attackSpeed"/>
+        <result column="cast_speed" jdbcType="SMALLINT" property="castSpeed"/>
+        <result column="hit_recovery" jdbcType="SMALLINT" property="hitRecovery"/>
+        <result column="jump" jdbcType="SMALLINT" property="jump"/>
+        <result column="charac_weight" jdbcType="INTEGER" property="characWeight"/>
+        <result column="fatigue" jdbcType="SMALLINT" property="fatigue"/>
+        <result column="max_fatigue" jdbcType="SMALLINT" property="maxFatigue"/>
+        <result column="premium_fatigue" jdbcType="SMALLINT" property="premiumFatigue"/>
+        <result column="max_premium_fatigue" jdbcType="SMALLINT" property="maxPremiumFatigue"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="last_play_time" jdbcType="TIMESTAMP" property="lastPlayTime"/>
+        <result column="dungeon_clear_point" jdbcType="INTEGER" property="dungeonClearPoint"/>
+        <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime"/>
+        <result column="delete_flag" jdbcType="TINYINT" property="deleteFlag"/>
+        <result column="guild_id" jdbcType="INTEGER" property="guildId"/>
+        <result column="guild_right" jdbcType="TINYINT" property="guildRight"/>
+        <result column="member_flag" jdbcType="TINYINT" property="memberFlag"/>
+        <result column="sex" jdbcType="TINYINT" property="sex"/>
+        <result column="expert_job" jdbcType="TINYINT" property="expertJob"/>
+        <result column="skill_tree_index" jdbcType="TINYINT" property="skillTreeIndex"/>
+        <result column="link_charac_no" jdbcType="INTEGER" property="linkCharacNo"/>
+        <result column="event_charac_level" jdbcType="TINYINT" property="eventCharacLevel"/>
+        <result column="guild_secede" jdbcType="TINYINT" property="guildSecede"/>
+        <result column="start_time" jdbcType="INTEGER" property="startTime"/>
+        <result column="finish_time" jdbcType="INTEGER" property="finishTime"/>
+        <result column="competition_area" jdbcType="TINYINT" property="competitionArea"/>
+        <result column="competition_period" jdbcType="TINYINT" property="competitionPeriod"/>
+        <result column="mercenary_start_time" jdbcType="INTEGER" property="mercenaryStartTime"/>
+        <result column="mercenary_finish_time" jdbcType="INTEGER" property="mercenaryFinishTime"/>
+        <result column="mercenary_area" jdbcType="TINYINT" property="mercenaryArea"/>
+        <result column="mercenary_period" jdbcType="TINYINT" property="mercenaryPeriod"/>
+        <result column="VIP" jdbcType="VARCHAR" property="vip"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cc.buckler.dnf.pojo.CharacInfo">
+        <result column="element_resist" jdbcType="BINARY" property="elementResist"/>
+        <result column="spec_property" jdbcType="BINARY" property="specProperty"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        charac_no
+        , m_id, charac_name, village, job, lev, exp, grow_type, HP, maxHP, maxMP,
+    phy_attack, phy_defense, mag_attack, mag_defense, inven_weight, hp_regen, mp_regen, 
+    move_speed, attack_speed, cast_speed, hit_recovery, jump, charac_weight, fatigue, 
+    max_fatigue, premium_fatigue, max_premium_fatigue, create_time, last_play_time, dungeon_clear_point, 
+    delete_time, delete_flag, guild_id, guild_right, member_flag, sex, expert_job, skill_tree_index, 
+    link_charac_no, event_charac_level, guild_secede, start_time, finish_time, competition_area, 
+    competition_period, mercenary_start_time, mercenary_finish_time, mercenary_area, 
+    mercenary_period, VIP
+    </sql>
+    <sql id="Blob_Column_List">
+        element_resist
+        , spec_property
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from charac_info
+        where charac_no = #{characNo,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectCharacListByMid" parameterType="java.lang.String">
+        select *
+        from charac_info
+        where m_id = #{mid};
+    </select>
+</mapper>
