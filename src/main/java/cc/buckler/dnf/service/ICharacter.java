@@ -1,9 +1,13 @@
-package cc.buckler.dnf.dao;
+package cc.buckler.dnf.service;
 
-import org.apache.ibatis.annotations.Mapper;
+import cc.buckler.dnf.pojo.CharacInfo;
 
-@Mapper
-public interface NewCharacQuestMapper {
+import java.util.List;
+
+public interface ICharacter {
+    List<CharacInfo> selectCharacListByMid(String account);
+
+    // 清理任务模块 BEGIN
     int update1(String characNo);
 
     int update2(String characNo);
@@ -19,4 +23,5 @@ public interface NewCharacQuestMapper {
     int update7(String characNo);
 
     int update8(String characNo);
+    //清理任务模块 END
 }

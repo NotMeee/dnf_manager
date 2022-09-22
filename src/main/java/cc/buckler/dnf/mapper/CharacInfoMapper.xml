@@ -82,9 +82,13 @@
         where charac_no = #{characNo,jdbcType=INTEGER}
     </select>
 
-    <select id="selectCharacListByMid" parameterType="java.lang.String">
-        select *
-        from charac_info
-        where m_id = #{mid};
+    <select id="selectCharacListByMid" parameterType="java.lang.String" resultType="cc.buckler.dnf.pojo.CharacInfo">
+        SELECT m_id,
+               charac_no,
+               charac_name,
+               job,
+               lev
+        FROM charac_info
+        WHERE delete_flag != 1 and m_id = #{mid};
     </select>
 </mapper>

@@ -26,7 +26,9 @@ public enum ResultCodeEnum {
     //登录错误
     LOGIN_ERROR(1500, "login failure"),
     //充值错误
-    CASH_ERROR(1501, "cash error");
+    CASH_ERROR(1501, "cash error"),
+    CHARACTER_NOT_FOUND(1502, "character not found"),
+    FINISH_QUEST_FAILURE(1053, "finish quest failure");
 
     /**
      * 响应状态码

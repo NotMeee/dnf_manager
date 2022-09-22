@@ -28,12 +28,13 @@ spring:
       username: game
       password: morelove0813...
     hikari:
-      minimum-idle: 10
-      maximum-pool-size: 100
+      minimum-idle: 5
+      maximum-pool-size: 15
       auto-commit: true
       idle-timeout: 30000
-      connection-timeout: 1800000
+      connection-timeout: 30000
       connection-test-query: SELECT 1
+      max-lifetime: 120000
 server:
   port: 1111
   tomcat:

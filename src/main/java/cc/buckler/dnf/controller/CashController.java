@@ -10,9 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @RestController
 @Slf4j
 public class CashController {
@@ -26,6 +23,7 @@ public class CashController {
         cera.setCera(iCash.selectCeraByPrimaryKey(account).getCera() + ceranum);
         int result = iCash.updateCeraByAccount(cera);
         if (result == 1) {
+            log.info(String.format("【%s】充值【%d】D币成功", account, ceranum));
             return HttpResult.success(1);
         } else {
             return HttpResult.failure(ResultCodeEnum.CASH_ERROR);
@@ -36,6 +34,7 @@ public class CashController {
     public HttpResult clearCera(String account) {
         int result = iCash.clearCeraByAccount(account);
         if (result == 1) {
+            log.info(String.format("【%s】清空D币成功", account));
             return HttpResult.success(1);
         } else {
             return HttpResult.success(ResultCodeEnum.CASH_ERROR);
@@ -49,6 +48,7 @@ public class CashController {
         ceraPoint.setCeraPoint(cerapointnum);
         int result = iCash.updateCeraPointByAccount(ceraPoint);
         if (result == 1) {
+            log.info(String.format("【%s】充值【%d】D点成功", account, cerapointnum));
             return HttpResult.success(1);
         } else {
             return HttpResult.success();
@@ -59,6 +59,7 @@ public class CashController {
     public HttpResult clearCeraPoint(String account) {
         int result = iCash.clearCeraPointByAccount(account);
         if (result == 1) {
+            log.info(String.format("【%s】清空D点成功", account));
             return HttpResult.success(1);
         } else {
             return HttpResult.success(ResultCodeEnum.CASH_ERROR);
