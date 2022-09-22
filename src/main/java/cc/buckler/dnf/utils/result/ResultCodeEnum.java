@@ -28,7 +28,10 @@ public enum ResultCodeEnum {
     //充值错误
     CASH_ERROR(1501, "cash error"),
     CHARACTER_NOT_FOUND(1502, "character not found"),
-    FINISH_QUEST_FAILURE(1053, "finish quest failure");
+    FINISH_QUEST_FAILURE(1053, "finish quest failure"),
+    OPEN_MAP_FAILURE(1054, "open map failure"),
+    CLEAR_PACK_FAILURE(1055, "clear pack failure"),
+    CLEAR_FASHION_FAILURE(1056, "clear fashion failure");
 
     /**
      * 响应状态码

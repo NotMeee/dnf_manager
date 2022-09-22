@@ -7,5 +7,6 @@ package cc.buckler.dnf.config;
 public enum DataSourceType {
     taiwan,
     billing,
-    cain
+    cain,
+    cain2nd,
 }

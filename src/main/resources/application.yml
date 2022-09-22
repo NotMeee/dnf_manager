@@ -27,6 +27,11 @@ spring:
       driver-class-name: com.mysql.jdbc.Driver
       username: game
       password: morelove0813...
+    cain2nd:
+      jdbc-url: jdbc:mysql://121.4.61.37:3306/taiwan_cain_2nd?useSSL=false
+      driver-class-name: com.mysql.jdbc.Driver
+      username: game
+      password: morelove0813...
     hikari:
       minimum-idle: 5
       maximum-pool-size: 15

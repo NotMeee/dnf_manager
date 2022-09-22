@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.sound.midi.MidiChannel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,23 +50,75 @@ public class CharacterController {
     /**
      * 清理全部主线任务
      *
-     * @param account 账号UID
+     * @param characNo 角色ID
      * @return
      */
     @GetMapping("/character/quest")
-    public HttpResult clearQuest(String account) {
-        iCharacter.update1(account);
-        iCharacter.update2(account);
-        iCharacter.update3(account);
-        iCharacter.update4(account);
-        iCharacter.update5(account);
-        iCharacter.update6(account);
-        iCharacter.update7(account);
-        int result = iCharacter.update8(account);
+    public HttpResult clearQuest(int characNo) {
+        iCharacter.update1(characNo);
+        iCharacter.update2(characNo);
+        iCharacter.update3(characNo);
+        iCharacter.update4(characNo);
+        iCharacter.update5(characNo);
+        iCharacter.update6(characNo);
+        iCharacter.update7(characNo);
+        int result = iCharacter.update8(characNo);
         if (result == 1) {
+            log.info(String.format("角色ID【%d】已清理全部主线任务", characNo));
             return HttpResult.success(1);
         } else {
             return HttpResult.failure(ResultCodeEnum.FINISH_QUEST_FAILURE);
+        }
+    }
+
+    /**
+     * 开启全图噩梦模式
+     *
+     * @param mId 账号UID
+     * @return
+     */
+    @GetMapping("/character/openmap")
+    public HttpResult openMap(int mId) {
+        int result = iCharacter.openMap(mId);
+        if (result == 1) {
+            log.info(String.format("UID【%d】已清理全部主线任务", mId));
+            return HttpResult.success(1);
+        } else {
+            return HttpResult.failure(ResultCodeEnum.OPEN_MAP_FAILURE);
+        }
+    }
+
+    /**
+     * 清理包裹
+     *
+     * @param characNo 角色ID
+     * @return
+     */
+    @GetMapping("/character/clearpack")
+    public HttpResult clearPack(int characNo) {
+        int result = iCharacter.clearPack(characNo);
+        if (result == 1) {
+            log.info(String.format("角色ID【%d】背包已清理", characNo));
+            return HttpResult.success(1);
+        } else {
+            return HttpResult.failure(ResultCodeEnum.CLEAR_PACK_FAILURE);
+        }
+    }
+
+    /**
+     * 清理时装
+     *
+     * @param characNo 角色ID
+     * @return
+     */
+    @GetMapping("/character/clearfashion")
+    public HttpResult clearFashion(int characNo) {
+        int result = iCharacter.clearFashion(characNo);
+        if (result >= 0) {
+            log.info(String.format("角色ID【%d】时装已清理", characNo));
+            return HttpResult.success(1);
+        } else {
+            return HttpResult.failure(ResultCodeEnum.CLEAR_FASHION_FAILURE);
         }
     }
 }

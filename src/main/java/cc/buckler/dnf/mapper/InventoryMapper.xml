@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.buckler.dnf.dao.InventoryMapper">
+    <resultMap id="BaseResultMap" type="cc.buckler.dnf.pojo.Inventory">
+        <id column="charac_no" jdbcType="INTEGER" property="characNo"/>
+        <result column="money" jdbcType="INTEGER" property="money"/>
+        <result column="coin" jdbcType="INTEGER" property="coin"/>
+        <result column="pay_coin" jdbcType="INTEGER" property="payCoin"/>
+        <result column="event_coin" jdbcType="INTEGER" property="eventCoin"/>
+        <result column="creature_flag" jdbcType="TINYINT" property="creatureFlag"/>
+        <result column="inventory_capacity" jdbcType="INTEGER" property="inventoryCapacity"/>
+        <result column="avatar_coin" jdbcType="INTEGER" property="avatarCoin"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cc.buckler.dnf.pojo.Inventory">
+        <result column="inventory" jdbcType="LONGVARBINARY" property="inventory"/>
+        <result column="equipslot" jdbcType="LONGVARBINARY" property="equipslot"/>
+        <result column="creature" jdbcType="LONGVARBINARY" property="creature"/>
+        <result column="katagaki" jdbcType="LONGVARBINARY" property="katagaki"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        charac_no
+        , money, coin, pay_coin, event_coin, creature_flag, inventory_capacity,
+    avatar_coin
+    </sql>
+    <sql id="Blob_Column_List">
+        inventory
+        , equipslot, creature, katagaki
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from inventory
+        where charac_no = #{characNo,jdbcType=INTEGER}
+    </select>
+
+    <update id="clearPack" parameterType="java.lang.Integer">
+        update inventory
+        set inventory = ''
+        where charac_no = #{characNo};
+    </update>
+</mapper>

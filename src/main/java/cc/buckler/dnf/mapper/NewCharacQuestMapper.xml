@@ -72,54 +72,54 @@
         where charac_no = #{characNo,jdbcType=INTEGER}
     </select>
 
-    <!--  BEGIN  -->
+    <!--  清理任务 BEGIN  -->
     <!--  此处执行六条语句即可完成主线任务  -->
-    <update id="update1" parameterType="java.lang.String">
+    <update id="update1" parameterType="java.lang.Integer">
         update new_charac_quest
         set clear_quest = 0x30750000789CEDD8D1928220140050F8FF9FDE5971110C122D9A1D3BE7A149A07B0514A5105A625C3E92FCA5168A2671FDBA8BB29436136C8962DDA68C7ECAFE37E7234C73D49F629CF7E5B9FA774A9649D92A433135334EBB3EC1902679BD36D6F2B969396BFC52F8C2A9FBC22E9F377B2901DE2DAFFBF939FD81B702E0066EB956ECF7AEC77BD1AB39A60E5F9D603BAAB6DDCD2D79715AB1D82CF6933C76EA052361427A271F0ED918F6B2BC3B0939D9DF70AC3BE9345EBB80A3639322AC55B1B5B9C80D1B519FE8752E6EE91EDA96DDCF65D571E8FD43D2EC342C3A3705F7D55B08AF45E92C58CF4A9BB9FB0BF451F0BAAE5771D8A12B9A8F15B714C04916CE7F60E0313C1CEAF510000000000000000000000000000000000000000000DCC50F3758027A
         where charac_no = #{characNo};
     </update>
 
-    <update id="update2" parameterType="java.lang.String">
+    <update id="update2" parameterType="java.lang.Integer">
         update new_charac_quest
         set quest_notify=0xCC110000A01100000000000000000000000000000000000000000000000000000000000000000000
         where charac_no = #{characNo};
     </update>
 
-    <update id="update3" parameterType="java.lang.String">
+    <update id="update3" parameterType="java.lang.Integer">
         update new_charac_quest
         set play_1 = 4590
         where charac_no = #{characNo};
     </update>
 
-    <update id="update4" parameterType="java.lang.String">
+    <update id="update4" parameterType="java.lang.Integer">
         update new_charac_quest
         set play_1_trigger = 1
         where charac_no = #{characNo};
     </update>
 
-    <update id="update5" parameterType="java.lang.String">
+    <update id="update5" parameterType="java.lang.Integer">
         update new_charac_quest
         set play_2 = 4556
         where charac_no = #{characNo};
     </update>
 
-    <update id="update6" parameterType="java.lang.String">
+    <update id="update6" parameterType="java.lang.Integer">
         update new_charac_quest
         set play_2_trigger = 1
         where charac_no = #{characNo};
     </update>
 
-    <update id="update7" parameterType="java.lang.String">
+    <update id="update7" parameterType="java.lang.Integer">
         update new_charac_quest
         set play_3 = 4512
         where charac_no = #{characNo};
     </update>
 
-    <update id="update8" parameterType="java.lang.String">
-        update taiwan_cain.new_charac_quest
+    <update id="update8" parameterType="java.lang.Integer">
+        update new_charac_quest
         set play_3_trigger = 1
         where charac_no = #{characNo};
     </update>
-    <!--  END  -->
+    <!--  清理任务 END  -->
 </mapper>

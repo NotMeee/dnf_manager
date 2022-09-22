@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.buckler.dnf.dao.UserItemsMapper">
+    <resultMap id="BaseResultMap" type="cc.buckler.dnf.pojo.UserItems">
+        <id column="ui_id" jdbcType="INTEGER" property="uiId"/>
+        <result column="charac_no" jdbcType="INTEGER" property="characNo"/>
+        <result column="slot" jdbcType="INTEGER" property="slot"/>
+        <result column="it_id" jdbcType="INTEGER" property="itId"/>
+        <result column="expire_date" jdbcType="TIMESTAMP" property="expireDate"/>
+        <result column="obtain_from" jdbcType="TINYINT" property="obtainFrom"/>
+        <result column="reg_date" jdbcType="TIMESTAMP" property="regDate"/>
+        <result column="ipg_agency_no" jdbcType="VARCHAR" property="ipgAgencyNo"/>
+        <result column="ability_no" jdbcType="TINYINT" property="abilityNo"/>
+        <result column="stat" jdbcType="TINYINT" property="stat"/>
+        <result column="clear_avatar_id" jdbcType="INTEGER" property="clearAvatarId"/>
+        <result column="item_lock_key" jdbcType="TINYINT" property="itemLockKey"/>
+        <result column="to_ipg_agency_no" jdbcType="VARCHAR" property="toIpgAgencyNo"/>
+        <result column="m_time" jdbcType="TIMESTAMP" property="mTime"/>
+        <result column="hidden_option" jdbcType="SMALLINT" property="hiddenOption"/>
+        <result column="emblem_endurance" jdbcType="SMALLINT" property="emblemEndurance"/>
+        <result column="color1" jdbcType="INTEGER" property="color1"/>
+        <result column="color2" jdbcType="INTEGER" property="color2"/>
+        <result column="trade_restrict" jdbcType="INTEGER" property="tradeRestrict"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cc.buckler.dnf.pojo.UserItems">
+        <result column="jewel_socket" jdbcType="LONGVARBINARY" property="jewelSocket"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ui_id
+        , charac_no, slot, it_id, expire_date, obtain_from, reg_date, ipg_agency_no,
+    ability_no, stat, clear_avatar_id, item_lock_key, to_ipg_agency_no, m_time, hidden_option, 
+    emblem_endurance, color1, color2, trade_restrict
+    </sql>
+    <sql id="Blob_Column_List">
+        jewel_socket
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from user_items
+        where ui_id = #{uiId,jdbcType=INTEGER}
+    </select>
+
+    <delete id="clearFashion" parameterType="java.lang.Integer">
+        delete
+        from user_items
+        where charac_no = #{characNo};
+    </delete>
+</mapper>

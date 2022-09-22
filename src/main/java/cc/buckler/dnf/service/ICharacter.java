@@ -8,20 +8,29 @@ public interface ICharacter {
     List<CharacInfo> selectCharacListByMid(String account);
 
     // 清理任务模块 BEGIN
-    int update1(String characNo);
+    int update1(int characNo);
 
-    int update2(String characNo);
+    int update2(int characNo);
 
-    int update3(String characNo);
+    int update3(int characNo);
 
-    int update4(String characNo);
+    int update4(int characNo);
 
-    int update5(String characNo);
+    int update5(int characNo);
 
-    int update6(String characNo);
+    int update6(int characNo);
 
-    int update7(String characNo);
+    int update7(int characNo);
 
-    int update8(String characNo);
-    //清理任务模块 END
+    int update8(int characNo);
+    // 清理任务模块 END
+
+    // 开启全图噩梦难度
+    int openMap(int mId);
+
+    // 清理包裹
+    int clearPack(int characNo);
+
+    // 清理时装
+    int clearFashion(int characNo);
 }
