@@ -31,7 +31,8 @@ public enum ResultCodeEnum {
     FINISH_QUEST_FAILURE(1053, "finish quest failure"),
     OPEN_MAP_FAILURE(1054, "open map failure"),
     CLEAR_PACK_FAILURE(1055, "clear pack failure"),
-    CLEAR_FASHION_FAILURE(1056, "clear fashion failure");
+    CLEAR_FASHION_FAILURE(1056, "clear fashion failure"),
+    CLEAR_PET_FAILURE(1057, "clear pet failure");
 
     /**
      * 响应状态码

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.buckler.dnf.dao.CreatureItemsMapper">
+    <resultMap id="BaseResultMap" type="cc.buckler.dnf.pojo.CreatureItems">
+        <id column="ui_id" jdbcType="INTEGER" property="uiId"/>
+        <result column="charac_no" jdbcType="INTEGER" property="characNo"/>
+        <result column="slot" jdbcType="TINYINT" property="slot"/>
+        <result column="it_id" jdbcType="INTEGER" property="itId"/>
+        <result column="reg_date" jdbcType="TIMESTAMP" property="regDate"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="stomach" jdbcType="INTEGER" property="stomach"/>
+        <result column="exp" jdbcType="INTEGER" property="exp"/>
+        <result column="endurance" jdbcType="TINYINT" property="endurance"/>
+        <result column="creature_type" jdbcType="TINYINT" property="creatureType"/>
+        <result column="no_charge" jdbcType="TINYINT" property="noCharge"/>
+        <result column="stat" jdbcType="TINYINT" property="stat"/>
+        <result column="item_lock_key" jdbcType="TINYINT" property="itemLockKey"/>
+        <result column="ipg_agency_no" jdbcType="VARCHAR" property="ipgAgencyNo"/>
+        <result column="expire_date" jdbcType="TIMESTAMP" property="expireDate"/>
+        <result column="delete_date" jdbcType="TIMESTAMP" property="deleteDate"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ui_id
+        , charac_no, slot, it_id, reg_date, name, stomach, exp, endurance, creature_type,
+    no_charge, stat, item_lock_key, ipg_agency_no, expire_date, delete_date
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from creature_items
+        where ui_id = #{uiId,jdbcType=INTEGER}
+    </select>
+
+    <delete id="clearPet" parameterType="java.lang.Integer">
+        delete
+        from creature_items
+        where charac_no = #{characNo};
+    </delete>
+</mapper>

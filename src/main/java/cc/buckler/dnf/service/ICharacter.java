@@ -28,9 +28,15 @@ public interface ICharacter {
     // 开启全图噩梦难度
     int openMap(int mId);
 
+    // 开启左右槽
+    int openSlot(int characNo);
+
     // 清理包裹
     int clearPack(int characNo);
 
     // 清理时装
     int clearFashion(int characNo);
+
+    // 清理宠物
+    int clearPet(int characNo);
 }

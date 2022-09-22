@@ -18,9 +18,13 @@ public class CharacterService implements ICharacter {
     @Autowired
     private MemberDungeonMapper memberDungeonMapper;
     @Autowired
+    private CharacStatMapper characStatMapper;
+    @Autowired
     private InventoryMapper inventoryMapper;
     @Autowired
     private UserItemsMapper userItemsMapper;
+    @Autowired
+    private CreatureItemsMapper creatureItemsMapper;
 
     @Override
     @DataSource(DataSourceType.cain)
@@ -84,6 +88,13 @@ public class CharacterService implements ICharacter {
         return memberDungeonMapper.openMap(mId);
     }
 
+    // 开启左右槽
+    @Override
+    @DataSource(DataSourceType.cain)
+    public int openSlot(int characNo) {
+        return characStatMapper.openSlot(characNo);
+    }
+
     // 清理包裹
     @Override
     @DataSource(DataSourceType.cain2nd)
@@ -96,5 +107,11 @@ public class CharacterService implements ICharacter {
     @DataSource(DataSourceType.cain2nd)
     public int clearFashion(int characNo) {
         return userItemsMapper.clearFashion(characNo);
+    }
+
+    @Override
+    @DataSource(DataSourceType.cain2nd)
+    public int clearPet(int characNo) {
+        return creatureItemsMapper.clearPet(characNo);
     }
 }

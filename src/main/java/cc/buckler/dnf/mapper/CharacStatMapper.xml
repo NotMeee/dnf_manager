@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.buckler.dnf.dao.CharacStatMapper">
+    <resultMap id="BaseResultMap" type="cc.buckler.dnf.pojo.CharacStat">
+        <id column="charac_no" jdbcType="INTEGER" property="characNo"/>
+        <result column="village" jdbcType="TINYINT" property="village"/>
+        <result column="exp" jdbcType="INTEGER" property="exp"/>
+        <result column="HP" jdbcType="TINYINT" property="hp"/>
+        <result column="fatigue" jdbcType="SMALLINT" property="fatigue"/>
+        <result column="used_fatigue" jdbcType="SMALLINT" property="usedFatigue"/>
+        <result column="premium_fatigue" jdbcType="SMALLINT" property="premiumFatigue"/>
+        <result column="dungeon_clear_point" jdbcType="INTEGER" property="dungeonClearPoint"/>
+        <result column="last_play_time" jdbcType="TIMESTAMP" property="lastPlayTime"/>
+        <result column="forbidden_to_play" jdbcType="CHAR" property="forbiddenToPlay"/>
+        <result column="forbidden_due_to" jdbcType="TIMESTAMP" property="forbiddenDueTo"/>
+        <result column="tutorial_flag" jdbcType="INTEGER" property="tutorialFlag"/>
+        <result column="trade_gold_total" jdbcType="INTEGER" property="tradeGoldTotal"/>
+        <result column="trade_gold_total_billion" jdbcType="SMALLINT" property="tradeGoldTotalBillion"/>
+        <result column="trade_gold_daily" jdbcType="INTEGER" property="tradeGoldDaily"/>
+        <result column="dungeon_map_pass_cnt" jdbcType="INTEGER" property="dungeonMapPassCnt"/>
+        <result column="dungeon_map_help_pass_cnt" jdbcType="INTEGER" property="dungeonMapHelpPassCnt"/>
+        <result column="help_abuse_point" jdbcType="INTEGER" property="helpAbusePoint"/>
+        <result column="chaos_point" jdbcType="INTEGER" property="chaosPoint"/>
+        <result column="chaos_exp" jdbcType="INTEGER" property="chaosExp"/>
+        <result column="chaos_mode_count" jdbcType="INTEGER" property="chaosModeCount"/>
+        <result column="chaos_kill_count" jdbcType="INTEGER" property="chaosKillCount"/>
+        <result column="chaos_die_count" jdbcType="INTEGER" property="chaosDieCount"/>
+        <result column="chaos_die_time" jdbcType="TIMESTAMP" property="chaosDieTime"/>
+        <result column="chaos_kill_time" jdbcType="TIMESTAMP" property="chaosKillTime"/>
+        <result column="assault_count" jdbcType="INTEGER" property="assaultCount"/>
+        <result column="luck_point" jdbcType="INTEGER" property="luckPoint"/>
+        <result column="dungeon_play_count" jdbcType="INTEGER" property="dungeonPlayCount"/>
+        <result column="help_abuse_ratio" jdbcType="INTEGER" property="helpAbuseRatio"/>
+        <result column="help_abuse_exp" jdbcType="INTEGER" property="helpAbuseExp"/>
+        <result column="expert_job_exp" jdbcType="INTEGER" property="expertJobExp"/>
+        <result column="fatigue_battery_charging" jdbcType="INTEGER" property="fatigueBatteryCharging"/>
+        <result column="escalade_tutorial_flag" jdbcType="VARCHAR" property="escaladeTutorialFlag"/>
+        <result column="power_war_point" jdbcType="SMALLINT" property="powerWarPoint"/>
+        <result column="power_war_assault_count" jdbcType="INTEGER" property="powerWarAssaultCount"/>
+        <result column="power_war_assault_victory_count" jdbcType="INTEGER" property="powerWarAssaultVictoryCount"/>
+        <result column="fatigue_grownup_buff" jdbcType="INTEGER" property="fatigueGrownupBuff"/>
+        <result column="village_prev" jdbcType="TINYINT" property="villagePrev"/>
+        <result column="last_play_time_powerwar" jdbcType="TIMESTAMP" property="lastPlayTimePowerwar"/>
+        <result column="emotion" jdbcType="SMALLINT" property="emotion"/>
+        <result column="add_slot_flag" jdbcType="TINYINT" property="addSlotFlag"/>
+        <result column="member_dungeon_flag" jdbcType="TINYINT" property="memberDungeonFlag"/>
+        <result column="open_flag" jdbcType="TINYINT" property="openFlag"/>
+        <result column="member_bonus_fatigue" jdbcType="TINYINT" property="memberBonusFatigue"/>
+        <result column="birthday_effect_time" jdbcType="TIMESTAMP" property="birthdayEffectTime"/>
+        <result column="visible_flags" jdbcType="TINYINT" property="visibleFlags"/>
+        <result column="add_equipslot_flag" jdbcType="TINYINT" property="addEquipslotFlag"/>
+        <result column="channel_equipslot_switch" jdbcType="TINYINT" property="channelEquipslotSwitch"/>
+        <result column="expand_equipslot_switch" jdbcType="TINYINT" property="expandEquipslotSwitch"/>
+        <result column="growth_power_reward" jdbcType="TINYINT" property="growthPowerReward"/>
+        <result column="chaos_respon_time" jdbcType="TIMESTAMP" property="chaosResponTime"/>
+        <result column="last_play_dungeon_index" jdbcType="INTEGER" property="lastPlayDungeonIndex"/>
+        <result column="total_play_time" jdbcType="INTEGER" property="totalPlayTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        charac_no
+        , village, exp, HP, fatigue, used_fatigue, premium_fatigue, dungeon_clear_point,
+    last_play_time, forbidden_to_play, forbidden_due_to, tutorial_flag, trade_gold_total, 
+    trade_gold_total_billion, trade_gold_daily, dungeon_map_pass_cnt, dungeon_map_help_pass_cnt, 
+    help_abuse_point, chaos_point, chaos_exp, chaos_mode_count, chaos_kill_count, chaos_die_count, 
+    chaos_die_time, chaos_kill_time, assault_count, luck_point, dungeon_play_count, help_abuse_ratio, 
+    help_abuse_exp, expert_job_exp, fatigue_battery_charging, escalade_tutorial_flag, 
+    power_war_point, power_war_assault_count, power_war_assault_victory_count, fatigue_grownup_buff, 
+    village_prev, last_play_time_powerwar, emotion, add_slot_flag, member_dungeon_flag, 
+    open_flag, member_bonus_fatigue, birthday_effect_time, visible_flags, add_equipslot_flag, 
+    channel_equipslot_switch, expand_equipslot_switch, growth_power_reward, chaos_respon_time, 
+    last_play_dungeon_index, total_play_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from charac_stat
+        where charac_no = #{characNo,jdbcType=INTEGER}
+    </select>
+
+    <update id="openSlot" parameterType="java.lang.Integer">
+        update charac_stat
+        set add_slot_flag = 3
+        where charac_no = #{characNo};
+    </update>
+</mapper>

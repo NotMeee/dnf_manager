@@ -89,6 +89,23 @@ public class CharacterController {
     }
 
     /**
+     * 开启左右槽
+     *
+     * @param characNo 角色ID
+     * @return
+     */
+    @GetMapping("/character/openslot")
+    public HttpResult openSlot(int characNo) {
+        int result = iCharacter.openSlot(characNo);
+        if (result == 1) {
+            log.info(String.format("角色ID【%d】已开启左右槽", characNo));
+            return HttpResult.success(1);
+        } else {
+            return HttpResult.failure(ResultCodeEnum.OPEN_MAP_FAILURE);
+        }
+    }
+
+    /**
      * 清理包裹
      *
      * @param characNo 角色ID
@@ -119,6 +136,23 @@ public class CharacterController {
             return HttpResult.success(1);
         } else {
             return HttpResult.failure(ResultCodeEnum.CLEAR_FASHION_FAILURE);
+        }
+    }
+
+    /**
+     * 清理宠物
+     *
+     * @param characNo 角色ID
+     * @return
+     */
+    @GetMapping("/character/clearpet")
+    public HttpResult clearPet(int characNo) {
+        int result = iCharacter.clearPet(characNo);
+        if (result >= 0) {
+            log.info(String.format("角色ID【%d】宠物已清理", characNo));
+            return HttpResult.success(1);
+        } else {
+            return HttpResult.failure(ResultCodeEnum.CLEAR_PET_FAILURE);
         }
     }
 }
