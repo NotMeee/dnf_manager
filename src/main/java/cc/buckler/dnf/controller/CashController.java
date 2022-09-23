@@ -26,6 +26,7 @@ public class CashController {
             log.info(String.format("【%s】充值【%d】D币成功", account, ceranum));
             return HttpResult.success(1);
         } else {
+            log.info(String.format("【%s】充值【%d】D币失败", account, ceranum));
             return HttpResult.failure(ResultCodeEnum.CASH_ERROR);
         }
     }
@@ -37,7 +38,8 @@ public class CashController {
             log.info(String.format("【%s】清空D币成功", account));
             return HttpResult.success(1);
         } else {
-            return HttpResult.success(ResultCodeEnum.CASH_ERROR);
+            log.info(String.format("【%s】清空D币失败", account));
+            return HttpResult.failure(ResultCodeEnum.CASH_ERROR);
         }
     }
 
@@ -51,7 +53,8 @@ public class CashController {
             log.info(String.format("【%s】充值【%d】D点成功", account, cerapointnum));
             return HttpResult.success(1);
         } else {
-            return HttpResult.success();
+            log.info(String.format("【%s】充值【%d】D点失败", account, cerapointnum));
+            return HttpResult.failure(ResultCodeEnum.CASH_ERROR);
         }
     }
 
@@ -62,7 +65,8 @@ public class CashController {
             log.info(String.format("【%s】清空D点成功", account));
             return HttpResult.success(1);
         } else {
-            return HttpResult.success(ResultCodeEnum.CASH_ERROR);
+            log.info(String.format("【%s】清空D点失败", account));
+            return HttpResult.failure(ResultCodeEnum.CASH_ERROR);
         }
     }
 }
