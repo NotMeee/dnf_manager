@@ -32,7 +32,8 @@ public enum ResultCodeEnum {
     OPEN_MAP_FAILURE(1054, "open map failure"),
     CLEAR_PACK_FAILURE(1055, "clear pack failure"),
     CLEAR_FASHION_FAILURE(1056, "clear fashion failure"),
-    CLEAR_PET_FAILURE(1057, "clear pet failure");
+    CLEAR_PET_FAILURE(1057, "clear pet failure"),
+    JOB_TURN_FAILURE(1058, "job turn failure");
 
     /**
      * 响应状态码

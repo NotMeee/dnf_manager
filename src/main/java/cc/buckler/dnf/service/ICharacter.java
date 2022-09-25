@@ -39,4 +39,7 @@ public interface ICharacter {
 
     // 清理宠物
     int clearPet(int characNo);
+
+    // 转职
+    int jobTurn(int job, int growType, int characNo);
 }

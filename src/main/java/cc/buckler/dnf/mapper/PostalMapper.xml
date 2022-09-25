@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.buckler.dnf.dao.PostalMapper">
+    <resultMap id="BaseResultMap" type="cc.buckler.dnf.pojo.Postal">
+        <id column="postal_id" jdbcType="INTEGER" property="postalId"/>
+        <result column="occ_time" jdbcType="TIMESTAMP" property="occTime"/>
+        <result column="send_charac_no" jdbcType="INTEGER" property="sendCharacNo"/>
+        <result column="send_charac_name" jdbcType="VARCHAR" property="sendCharacName"/>
+        <result column="receive_charac_no" jdbcType="INTEGER" property="receiveCharacNo"/>
+        <result column="item_id" jdbcType="INTEGER" property="itemId"/>
+        <result column="add_info" jdbcType="INTEGER" property="addInfo"/>
+        <result column="endurance" jdbcType="SMALLINT" property="endurance"/>
+        <result column="upgrade" jdbcType="TINYINT" property="upgrade"/>
+        <result column="amplify_option" jdbcType="TINYINT" property="amplifyOption"/>
+        <result column="amplify_value" jdbcType="INTEGER" property="amplifyValue"/>
+        <result column="gold" jdbcType="INTEGER" property="gold"/>
+        <result column="receive_time" jdbcType="TIMESTAMP" property="receiveTime"/>
+        <result column="delete_flag" jdbcType="TINYINT" property="deleteFlag"/>
+        <result column="avata_flag" jdbcType="TINYINT" property="avataFlag"/>
+        <result column="unlimit_flag" jdbcType="TINYINT" property="unlimitFlag"/>
+        <result column="seal_flag" jdbcType="TINYINT" property="sealFlag"/>
+        <result column="creature_flag" jdbcType="TINYINT" property="creatureFlag"/>
+        <result column="postal" jdbcType="INTEGER" property="postal"/>
+        <result column="letter_id" jdbcType="INTEGER" property="letterId"/>
+        <result column="extend_info" jdbcType="INTEGER" property="extendInfo"/>
+        <result column="ipg_db_id" jdbcType="TINYINT" property="ipgDbId"/>
+        <result column="ipg_transaction_id" jdbcType="INTEGER" property="ipgTransactionId"/>
+        <result column="ipg_nexon_id" jdbcType="VARCHAR" property="ipgNexonId"/>
+        <result column="auction_id" jdbcType="BIGINT" property="auctionId"/>
+        <result column="seperate_upgrade" jdbcType="TINYINT" property="seperateUpgrade"/>
+        <result column="type" jdbcType="TINYINT" property="type"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cc.buckler.dnf.pojo.Postal">
+        <result column="random_option" jdbcType="VARBINARY" property="randomOption"/>
+        <result column="item_guid" jdbcType="VARBINARY" property="itemGuid"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        postal_id
+        , occ_time, send_charac_no, send_charac_name, receive_charac_no, item_id,
+    add_info, endurance, upgrade, amplify_option, amplify_value, gold, receive_time, 
+    delete_flag, avata_flag, unlimit_flag, seal_flag, creature_flag, postal, letter_id, 
+    extend_info, ipg_db_id, ipg_transaction_id, ipg_nexon_id, auction_id, seperate_upgrade, 
+    type
+    </sql>
+    <sql id="Blob_Column_List">
+        random_option
+        , item_guid
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from postal
+        where postal_id = #{postalId,jdbcType=INTEGER}
+    </select>
+
+    <update id="delPostal" parameterType="java.lang.Integer">
+        update postal
+        set delete_flag = 1
+        where receive_charac_no = #{receiveCharacNo};
+    </update>
+
+    <insert id="sendMail" parameterType="cc.buckler.dnf.pojo.Postal">
+        insert into postal(occ_time, send_charac_name, receive_charac_no, amplify_option, amplify_value,
+                           seperate_upgrade, seal_flag, item_id, add_info, upgrade, gold, letter_id)
+        values (#{occTime}, #{sendCharacName}, #{receiveCharacNo}, #{amplifyOption}, #{amplifyValue},
+                #{seperateUpgrade}, #{sealFlag}, #{itemId}, #{addInfo}, #{upgrade}, #{gold}, #{letterId});
+    </insert>
+</mapper>

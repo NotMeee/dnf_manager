@@ -114,4 +114,10 @@ public class CharacterService implements ICharacter {
     public int clearPet(int characNo) {
         return creatureItemsMapper.clearPet(characNo);
     }
+
+    @Override
+    @DataSource(DataSourceType.cain)
+    public int jobTurn(int job, int growType, int characNo) {
+        return characInfoMapper.jobTurn(job, growType, characNo);
+    }
 }

@@ -91,4 +91,12 @@
         FROM charac_info
         WHERE delete_flag != 1 and m_id = #{mid};
     </select>
+
+    <!--  转职  -->
+    <update id="jobTurn" parameterType="java.lang.Integer">
+        update charac_info
+        set job       = #{job},
+            grow_type = #{growType}
+        where charac_no = #{characNo};
+    </update>
 </mapper>

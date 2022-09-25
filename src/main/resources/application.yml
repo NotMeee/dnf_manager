@@ -1,34 +1,44 @@
 #spring:
 #  datasource:
 #    taiwan:
-#      jdbc-url: jdbc:mysql://localhost:3306/d_taiwan?characterEncoding=UTF-8&useSSL=false&Timezone=UTC
+#      jdbc-url: jdbc:mysql://localhost:3306/d_taiwan??useSSL=false
 #      driver-class-name: com.mysql.jdbc.Driver
 #      username: game
 #      password: uu5!^%jg
 #    billing:
-#      jdbc-url: jdbc:mysql://localhost:3306/taiwan_billing?characterEncoding=UTF-8&useSSL=false&Timezone=UTC
+#      jdbc-url: jdbc:mysql://localhost:3306/taiwan_billing?useSSL=false
+#      driver-class-name: com.mysql.jdbc.Driver
+#      username: game
+#      password: uu5!^%jg
+#    cain:
+#      jdbc-url: jdbc:mysql://localhost:3306/taiwan_cain?useSSL=false
+#      driver-class-name: com.mysql.jdbc.Driver
+#      username: game
+#      password: uu5!^%jg
+#    cain2nd:
+#      jdbc-url: jdbc:mysql://localhost:3306/taiwan_cain_2nd?useSSL=false
 #      driver-class-name: com.mysql.jdbc.Driver
 #      username: game
 #      password: uu5!^%jg
 spring:
   datasource:
     taiwan:
-      jdbc-url: jdbc:mysql://121.4.61.37:3306/d_taiwan?useSSL=false
+      jdbc-url: jdbc:mysql://124.220.33.239:3306/d_taiwan?useSSL=false
       driver-class-name: com.mysql.jdbc.Driver
       username: game
       password: morelove0813...
     billing:
-      jdbc-url: jdbc:mysql://121.4.61.37:3306/taiwan_billing?useSSL=false
+      jdbc-url: jdbc:mysql://124.220.33.239:3306/taiwan_billing?useSSL=false
       driver-class-name: com.mysql.jdbc.Driver
       username: game
       password: morelove0813...
     cain:
-      jdbc-url: jdbc:mysql://121.4.61.37:3306/taiwan_cain?useSSL=false
+      jdbc-url: jdbc:mysql://124.220.33.239:3306/taiwan_cain?useSSL=false
       driver-class-name: com.mysql.jdbc.Driver
       username: game
       password: morelove0813...
     cain2nd:
-      jdbc-url: jdbc:mysql://121.4.61.37:3306/taiwan_cain_2nd?useSSL=false
+      jdbc-url: jdbc:mysql://124.220.33.239:3306/taiwan_cain_2nd?useSSL=false
       driver-class-name: com.mysql.jdbc.Driver
       username: game
       password: morelove0813...

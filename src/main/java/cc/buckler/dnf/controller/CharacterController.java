@@ -155,4 +155,15 @@ public class CharacterController {
             return HttpResult.failure(ResultCodeEnum.CLEAR_PET_FAILURE);
         }
     }
+
+    @GetMapping("/character/jobturn")
+    public HttpResult jobTurn(int job, int growType, int characNo) {
+        int result = iCharacter.jobTurn(job, growType, characNo);
+        if (result == 1) {
+            log.info(String.format("角色ID【%d】转职成功", characNo));
+            return HttpResult.success(result);
+        } else {
+            return HttpResult.failure(ResultCodeEnum.JOB_TURN_FAILURE);
+        }
+    }
 }
