@@ -41,10 +41,10 @@ public class PostalController {
 
     /**
      * @param characNo        角色ID
-     * @param amplifyOption   是否红字
+     * @param amplifyOption   是否红字 0-无，1-体力，2-精神，3-力量，4-智力
      * @param amplifyValue    附加值
      * @param seperateUpgrade 锻造等级
-     * @param sealFlag        是否封装
+     * @param sealFlag        是否封装 0-无，1-封装
      * @param itemId          物品ID
      * @param num             数量
      * @param upgrade         强化等级
