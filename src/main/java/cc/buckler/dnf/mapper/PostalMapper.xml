@@ -67,4 +67,10 @@
         values (#{occTime}, #{sendCharacName}, #{receiveCharacNo}, #{amplifyOption}, #{amplifyValue},
                 #{seperateUpgrade}, #{sealFlag}, #{itemId}, #{addInfo}, #{upgrade}, #{gold}, #{letterId});
     </insert>
+
+    <select id="letterId" resultType="java.lang.Integer">
+        select letter_id
+        from postal
+        order by letter_id DESC limit 1;
+    </select>
 </mapper>
