@@ -50,16 +50,24 @@ public class MyBatisConfig {
         return DataSourceBuilder.create().build();
     }
 
+    @Bean("houtaiDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.houtai")
+    public DataSource houtaiDataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
     @Bean
     public DynamicDataSource dataSource(@Qualifier("taiwanDataSource") DataSource taiwanDataSource,
                                         @Qualifier("billingDataSource") DataSource billingDataSource,
                                         @Qualifier("cainDataSource") DataSource cainDataSource,
-                                        @Qualifier("cain2ndDataSource") DataSource cain2ndDataSource) {
+                                        @Qualifier("cain2ndDataSource") DataSource cain2ndDataSource,
+                                        @Qualifier("houtaiDataSource") DataSource houtaiDataSource) {
         Map<Object, Object> map = new HashMap<>();
         map.put(DataSourceType.taiwan, taiwanDataSource);
         map.put(DataSourceType.billing, billingDataSource);
         map.put(DataSourceType.cain, cainDataSource);
         map.put(DataSourceType.cain2nd, cain2ndDataSource);
+        map.put(DataSourceType.houtai, houtaiDataSource);
 
         DynamicDataSource dynamicDataSource = new DynamicDataSource();
         dynamicDataSource.setTargetDataSources(map);

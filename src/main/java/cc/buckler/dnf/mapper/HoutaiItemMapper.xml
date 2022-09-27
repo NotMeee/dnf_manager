@@ -14,7 +14,7 @@
         CREATE TABLE houtai_item
         (
             `itemcode` varchar(100) NULL,
-            `itemname` varchar(100) NULL
+            `itemname` varchar(800) NULL
         );
     </update>
 

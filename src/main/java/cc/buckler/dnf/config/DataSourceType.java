@@ -9,4 +9,5 @@ public enum DataSourceType {
     billing,
     cain,
     cain2nd,
+    houtai
 }

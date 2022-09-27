@@ -11,7 +11,7 @@ public interface HoutaiItemMapper {
 
     void createItemTable();
 
-    int addItem(HoutaiItem houtaiItem);
+    int addItem(HoutaiItem item);
 
     List<HoutaiItem> findAllItem();
 }

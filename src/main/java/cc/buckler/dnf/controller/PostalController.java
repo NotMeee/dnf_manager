@@ -4,6 +4,7 @@ import cc.buckler.dnf.pojo.HoutaiItem;
 import cc.buckler.dnf.pojo.Postal;
 import cc.buckler.dnf.service.IHoutaiItem;
 import cc.buckler.dnf.service.IPostal;
+import cc.buckler.dnf.utils.CharSetUtil;
 import cc.buckler.dnf.utils.result.HttpResult;
 import cc.buckler.dnf.utils.result.ResultCodeEnum;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -105,12 +107,18 @@ public class PostalController {
         }
     }
 
+    /**
+     * 上传道具，会覆盖
+     *
+     * @param file PVF导出的道具txt，格式为 name----code
+     * @return
+     */
     @PostMapping("/postal/upload/item")
     public HttpResult uploadItem(MultipartFile file) {
         if (!file.isEmpty()) {
             try {
                 // local
-                String path = ResourceUtils.getFile("/Users/wangjingzong/Documents/JavaProject/dnf_manager/upload").getPath();
+                String path = ResourceUtils.getFile("/Users/buckler/Documents/JavaProject/dnf_manager").getPath();
                 // linux
                 // String path = ResourceUtils.getFile("/root").getPath();
                 String fileName = file.getOriginalFilename();
@@ -129,7 +137,9 @@ public class PostalController {
     }
 
     /**
-     * 读入TXT文件
+     * 读取TXT文件，并将信息添加到数据库中
+     *
+     * @param path 文件路径
      */
     private void readFile(String path) {
         String pathname = path; // 绝对路径或相对路径都可以，写入文件时演示相对路径,读取以上路径的input.txt文件

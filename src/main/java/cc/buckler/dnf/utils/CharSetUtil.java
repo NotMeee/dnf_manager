@@ -1,7 +1,10 @@
 package cc.buckler.dnf.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.UnsupportedEncodingException;
 
+@Slf4j
 public class CharSetUtil {
     public static String convertCharset(String s) {
         if (s != null) {
@@ -29,8 +32,17 @@ public class CharSetUtil {
                 String result = new String(buffer, "UTF-8");
                 return result;
             } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
+                log.error(e.toString());
             }
+        }
+        return null;
+    }
+
+    public static String utf82Latin1(String str) {
+        try {
+            return new String(str.getBytes(), "ISO8859_1");
+        } catch (UnsupportedEncodingException e) {
+            log.error(e.toString());
         }
         return null;
     }
