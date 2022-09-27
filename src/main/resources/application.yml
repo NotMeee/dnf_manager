@@ -50,6 +50,10 @@ spring:
       connection-timeout: 30000
       connection-test-query: SELECT 1
       max-lifetime: 120000
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
 server:
   port: 1111
   tomcat:
@@ -58,5 +62,5 @@ server:
 logging:
   config: classpath:log4j2.xml
 mybatis:
-  mapper-locations: classpath*:cc/buckler/dnf/mapper/*.xml
+  mapper-locations: classpath:cc/buckler/dnf/mapper/*.xml
   type-aliases-package: cc.buckler.dnf.pojo

@@ -1,15 +1,22 @@
 package cc.buckler.dnf.controller;
 
+import cc.buckler.dnf.pojo.HoutaiItem;
 import cc.buckler.dnf.pojo.Postal;
+import cc.buckler.dnf.service.IHoutaiItem;
 import cc.buckler.dnf.service.IPostal;
 import cc.buckler.dnf.utils.result.HttpResult;
 import cc.buckler.dnf.utils.result.ResultCodeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: buckler
@@ -21,6 +28,8 @@ import java.util.Date;
 public class PostalController {
     @Autowired
     private IPostal iPostal;
+    @Autowired
+    private IHoutaiItem iHoutaiItem;
 
     /**
      * 删除邮件
@@ -37,6 +46,17 @@ public class PostalController {
         } else {
             return HttpResult.failure(ResultCodeEnum.CASH_ERROR);
         }
+    }
+
+    /**
+     * 获取物品列表
+     *
+     * @return 物品列表
+     */
+    @GetMapping("/postal/itemlist")
+    public HttpResult itemList() {
+        List<HoutaiItem> list = iHoutaiItem.findAllItem();
+        return HttpResult.success(list);
     }
 
     /**
@@ -82,6 +102,58 @@ public class PostalController {
             return HttpResult.success();
         } else {
             return HttpResult.failure(ResultCodeEnum.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/postal/upload/item")
+    public HttpResult uploadItem(MultipartFile file) {
+        if (!file.isEmpty()) {
+            try {
+                // local
+                String path = ResourceUtils.getFile("/Users/wangjingzong/Documents/JavaProject/dnf_manager/upload").getPath();
+                // linux
+                // String path = ResourceUtils.getFile("/root").getPath();
+                String fileName = file.getOriginalFilename();
+                File uploadFile = new File(path, fileName);
+                file.transferTo(uploadFile);
+                iHoutaiItem.createItemTable();
+                readFile(path + "/" + fileName);
+                return HttpResult.success(1);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return HttpResult.failure(ResultCodeEnum.SERVER_ERROR);
+    }
+
+    /**
+     * 读入TXT文件
+     */
+    private void readFile(String path) {
+        String pathname = path; // 绝对路径或相对路径都可以，写入文件时演示相对路径,读取以上路径的input.txt文件
+        //防止文件建立或读取失败，用catch捕捉错误并打印，也可以throw;
+        //不关闭文件会导致资源的泄露，读写文件都同理
+        //Java7的try-with-resources可以优雅关闭文件，异常时自动关闭文件；详细解读https://stackoverflow.com/a/12665271
+        try (FileReader reader = new FileReader(pathname); BufferedReader br = new BufferedReader(reader)) {// 建立一个对象，它把文件内容转成计算机能读懂的语言
+            String line;
+            //网友推荐更加简洁的写法
+            while ((line = br.readLine()) != null) {
+                // 一次读入一行数据
+//                System.out.println(line);
+                try {
+                    String itemName = line.split("----")[0];
+                    String itemCode = line.split("----")[1];
+                    HoutaiItem item = new HoutaiItem();
+                    item.setItemcode(itemCode);
+                    item.setItemname(itemName);
+                    iHoutaiItem.addItem(item);
+                } catch (ArrayIndexOutOfBoundsException e) {
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -5,7 +5,7 @@
 <!-- 配置生成器 -->
 <generatorConfiguration>
     <classPathEntry
-            location="/Users/buckler/Documents/JavaProject/dnf_manager/src/main/resources/jar/mysql-connector-java-5.1.49.jar"/>
+            location="/Users/wangjingzong/Documents/JavaProject/dnf_manager/src/main/resources/jar/mysql-connector-java-5.1.49.jar"/>
     <context id="mysql" defaultModelType="flat" targetRuntime="MyBatis3">
         <property name="autoDelimitKeywords" value="false"/>
         <property name="javaFileEncoding" value="UTF-8"/>
@@ -18,7 +18,7 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://121.4.61.37:3306/taiwan_cain_2nd?useSSL=false"
+                        connectionURL="jdbc:mysql://124.220.33.239:3306/taiwan_cain?useSSL=false"
                         userId="game"
                         password="morelove0813...">
         </jdbcConnection>
@@ -38,8 +38,8 @@
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-        <table tableName="postal"
-               domainObjectName="Postal"
+        <table tableName="houtai_item"
+               domainObjectName="HoutaiItem"
                enableInsert="false"
                enableSelectByPrimaryKey="true"
                enableUpdateByPrimaryKey="false"
