@@ -32,4 +32,16 @@ public class HoutaiItemService implements IHoutaiItem {
     public List<HoutaiItem> findAllItem() {
         return houtaiItemMapper.findAllItem();
     }
+
+    @Override
+    @DataSource(DataSourceType.cain)
+    public List<HoutaiItem> findItemByLimit(int range) {
+        return houtaiItemMapper.findItemByLimit(range);
+    }
+
+    @Override
+    @DataSource(DataSourceType.cain)
+    public List<HoutaiItem> itemSearch(String keyword) {
+        return houtaiItemMapper.itemSearch(keyword);
+    }
 }

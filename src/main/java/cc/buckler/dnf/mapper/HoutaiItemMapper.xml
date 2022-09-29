@@ -25,6 +25,20 @@
 
     <select id="findAllItem" resultType="cc.buckler.dnf.pojo.HoutaiItem">
         select *
-        from houtai_item;
+        from houtai_item
+        order by itemcode asc;
+    </select>
+
+    <select id="findItemByLimit" parameterType="java.lang.Integer" resultType="cc.buckler.dnf.pojo.HoutaiItem">
+        select *
+        from houtai_item
+        order by itemcode asc limit #{range};
+    </select>
+
+    <select id="itemSearch" parameterType="java.lang.String" resultType="cc.buckler.dnf.pojo.HoutaiItem">
+        select *
+        from houtai_item
+        where itemname like concat('%', #{keyword}, '%')
+        order by itemcode asc;
     </select>
 </mapper>

@@ -14,4 +14,8 @@ public interface HoutaiItemMapper {
     int addItem(HoutaiItem item);
 
     List<HoutaiItem> findAllItem();
+
+    List<HoutaiItem> findItemByLimit(int range);
+
+    List<HoutaiItem> itemSearch(String keyword);
 }

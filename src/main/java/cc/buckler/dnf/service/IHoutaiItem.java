@@ -10,4 +10,8 @@ public interface IHoutaiItem {
     int addItem(HoutaiItem houtaiItem);
 
     List<HoutaiItem> findAllItem();
+
+    List<HoutaiItem> findItemByLimit(int range);
+
+    List<HoutaiItem> itemSearch(String keyword);
 }

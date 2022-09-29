@@ -56,8 +56,14 @@ public class PostalController {
      * @return 物品列表
      */
     @GetMapping("/postal/itemlist")
-    public HttpResult itemList() {
-        List<HoutaiItem> list = iHoutaiItem.findAllItem();
+    public HttpResult itemList(int range) {
+        List<HoutaiItem> list = iHoutaiItem.findItemByLimit(range);
+        return HttpResult.success(list);
+    }
+
+    @GetMapping("/postal/search")
+    public HttpResult itemSerach(String keyword) {
+        List<HoutaiItem> list = iHoutaiItem.itemSearch(keyword);
         return HttpResult.success(list);
     }
 
@@ -101,7 +107,7 @@ public class PostalController {
         postal.setLetterId(iPostal.letterId() + 1);
         int result = iPostal.sendMail(postal);
         if (result == 1) {
-            return HttpResult.success();
+            return HttpResult.success(result);
         } else {
             return HttpResult.failure(ResultCodeEnum.NOT_FOUND);
         }
