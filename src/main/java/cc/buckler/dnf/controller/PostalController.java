@@ -79,12 +79,12 @@ public class PostalController {
      * @return
      */
     @GetMapping("/postal/send")
-    public HttpResult sendPostal(int characNo, byte amplifyOption, int amplifyValue, byte seperateUpgrade, byte sealFlag, int itemId, int num, byte upgrade) {
+    public HttpResult sendPostal(int characNo, byte amplifyOption, int amplifyValue, byte seperateUpgrade, byte sealFlag, int itemId, int num, byte upgrade) throws UnsupportedEncodingException {
         Postal postal = new Postal();
         // 日期
         postal.setOccTime(new Date());
         // 发送人
-        postal.setSendCharacName("GM");
+        postal.setSendCharacName("DNFGM");
         // 角色ID
         postal.setReceiveCharacNo(characNo);
         // 是否红字
@@ -107,6 +107,7 @@ public class PostalController {
         postal.setLetterId(iPostal.letterId() + 1);
         int result = iPostal.sendMail(postal);
         if (result == 1) {
+            log.info(String.format("角色ID【%d】邮件已发送", characNo));
             return HttpResult.success(result);
         } else {
             return HttpResult.failure(ResultCodeEnum.NOT_FOUND);
