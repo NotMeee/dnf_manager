@@ -21,7 +21,7 @@ public class AccountsService implements IAccounts {
 
     @Override
     @DataSource(DataSourceType.taiwan)
-    public Accounts login(String accountname,String password) {
-        return accountsMapper.login(accountname,password);
+    public Accounts login(String accountname, String password) {
+        return accountsMapper.login(accountname, password);
     }
 }

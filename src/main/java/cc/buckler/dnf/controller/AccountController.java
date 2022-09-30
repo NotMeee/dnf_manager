@@ -6,6 +6,7 @@ import cc.buckler.dnf.utils.result.HttpResult;
 import cc.buckler.dnf.utils.result.ResultCodeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ public class AccountController {
     @Autowired
     private IAccounts iAccounts;
 
-    @PostMapping("/login")
+    @GetMapping("/login")
     public HttpResult login(String accountname, String password) {
         Accounts account = iAccounts.login(accountname, password);
         if (account != null) {

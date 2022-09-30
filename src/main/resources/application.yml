@@ -1,57 +1,30 @@
-#spring:
-#  datasource:
-#    taiwan:
-#      jdbc-url: jdbc:mysql://localhost:3306/d_taiwan??useSSL=false
-#      driver-class-name: com.mysql.jdbc.Driver
-#      username: game
-#      password: uu5!^%jg
-#    billing:
-#      jdbc-url: jdbc:mysql://localhost:3306/taiwan_billing?useSSL=false
-#      driver-class-name: com.mysql.jdbc.Driver
-#      username: game
-#      password: uu5!^%jg
-#    cain:
-#      jdbc-url: jdbc:mysql://localhost:3306/taiwan_cain?useSSL=false?useSSL=false&characterEncoding=utf-8
-#      driver-class-name: com.mysql.jdbc.Driver
-#      username: game
-#      password: uu5!^%jg
-#    cain2nd:
-#      jdbc-url: jdbc:mysql://localhost:3306/taiwan_cain_2nd?useSSL=false
-#      driver-class-name: com.mysql.jdbc.Driver
-#      username: game
-#      password: uu5!^%jg
-#    houtai:
-#      jdbc-url: jdbc:mysql://124.220.33.239:3306/houtai?useSSL=false&characterEncoding=utf-8
-#      driver-class-name: com.mysql.jdbc.Driver
-#      username: game
-#      password: morelove0813...
 spring:
   datasource:
     taiwan:
-      jdbc-url: jdbc:mysql://124.220.33.239:3306/d_taiwan?useSSL=false
+      jdbc-url: jdbc:mysql://localhost:3306/d_taiwan??useSSL=false
       driver-class-name: com.mysql.jdbc.Driver
       username: game
-      password: morelove0813...
+      password: uu5!^%jg
     billing:
-      jdbc-url: jdbc:mysql://124.220.33.239:3306/taiwan_billing?useSSL=false
+      jdbc-url: jdbc:mysql://localhost:3306/taiwan_billing?useSSL=false
       driver-class-name: com.mysql.jdbc.Driver
       username: game
-      password: morelove0813...
+      password: uu5!^%jg
     cain:
-      jdbc-url: jdbc:mysql://124.220.33.239:3306/taiwan_cain?useSSL=false&characterEncoding=utf-8
+      jdbc-url: jdbc:mysql://localhost:3306/taiwan_cain?useSSL=false&characterEncoding=utf-8
       driver-class-name: com.mysql.jdbc.Driver
       username: game
-      password: morelove0813...
+      password: uu5!^%jg
     cain2nd:
-      jdbc-url: jdbc:mysql://124.220.33.239:3306/taiwan_cain_2nd?useSSL=false
+      jdbc-url: jdbc:mysql://localhost:3306/taiwan_cain_2nd?useSSL=false
       driver-class-name: com.mysql.jdbc.Driver
       username: game
-      password: morelove0813...
+      password: uu5!^%jg
     houtai:
-      jdbc-url: jdbc:mysql://124.220.33.239:3306/houtai?useSSL=false&characterEncoding=utf-8
+      jdbc-url: jdbc:mysql://localhost:3306/houtai?useSSL=false&characterEncoding=utf-8
       driver-class-name: com.mysql.jdbc.Driver
       username: game
-      password: morelove0813...
+      password: uu5!^%jg
     hikari:
       minimum-idle: 5
       maximum-pool-size: 15
